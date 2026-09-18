@@ -7,6 +7,23 @@
   font: 500 15px var(--font-sans); padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel-warm); color: var(--ink);
 }
 .mi-inv__form input[type="range"] { accent-color: var(--cc-blue, #2b62d9); width: 100%; }
+.mi-inv__boton-simular {
+  margin-top: 18px;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  border: none;
+  background: var(--cc-red, #d3222e);
+  color: #fff;
+  font: 700 13px var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform .18s var(--ease), opacity .18s var(--ease);
+}
+.mi-inv__boton-simular:hover:not(:disabled) { transform: translateY(-1px); }
+.mi-inv__boton-simular:disabled { opacity: .55; cursor: progress; }
+
 .mi-inv__estado { position: relative; margin-top: 20px; font: 12px var(--font-mono); color: var(--muted); padding-bottom: 8px; }
 .mi-inv__estado i { position: absolute; left: 0; bottom: 0; height: 2px; background: var(--cc-blue, #2b62d9); transition: width .2s; }
 .mi-inv__alerta { padding: 16px 18px; border-radius: 16px; border: 1px solid var(--line); font-size: 14.5px; line-height: 1.55; background: var(--panel-warm); }

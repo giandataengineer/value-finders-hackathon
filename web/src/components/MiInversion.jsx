@@ -30,6 +30,7 @@ export function MiInversion({ payload, cid, setCid }) {
   const [res, setRes] = useState(null);
   const [avance, setAvance] = useState(0);
   const [error, setError] = useState(null);
+  const [corrida, setCorrida] = useState(0);
   const worker = useRef(null);
 
   useEffect(() => {
@@ -53,11 +54,11 @@ export function MiInversion({ payload, cid, setCid }) {
           if (e.data.tipo === "listo") { setRes(e.data.r); setAvance(1); w.terminate(); }
           if (e.data.tipo === "error") { setError(e.data.mensaje); w.terminate(); }
         };
-        w.postMessage({ motor, opciones: { cid: cliente.id, cartera, meses, estado, sims: 5000 } });
+        w.postMessage({ motor, opciones: { cid: cliente.id, cartera, meses, estado, sims: 10000 } });
       } catch (err) { setError(String(err)); }
     }, 350);
     return () => clearTimeout(t);
-  }, [cliente?.id, cartera, meses, estado]);
+  }, [cliente?.id, cartera, meses, estado, corrida]);
 
   useEffect(() => () => worker.current?.terminate(), []);
 
@@ -99,7 +100,7 @@ export function MiInversion({ payload, cid, setCid }) {
     <div className="mi-inv" id="mi-inversion">
       <Panel eyebrow="Mi inversión" title="¿Cuánto podría ganar o perder?">
         <p className="panel__copy">
-          Elige el perfil, el monto y cuánto de tus ahorros representa. Corremos 5.000 futuros en tu navegador con el mismo motor que la simulación de Python y te mostramos el rango en dinero, no una cifra única.
+          Elige el perfil, el monto y cuánto de tus ahorros representa. Corremos 10.000 futuros en tu navegador con el mismo motor que la simulación de Python y te mostramos el rango en dinero, no una cifra única.
         </p>
 
         <div className="role-tabs" role="tablist">
@@ -130,6 +131,10 @@ export function MiInversion({ payload, cid, setCid }) {
             </select>
           </label>
         </div>
+
+        <button type="button" className="mi-inv__boton-simular" disabled={avance < 1} onClick={() => setCorrida((n) => n + 1)}>
+          Simular 10.000 futuros
+        </button>
 
         <div className="mi-inv__estado" aria-live="polite">
           {error ? `No se pudo simular: ${error}` : avance < 1 ? `Simulando ${Math.round(avance * 100)} %` : `${res?.sims.toLocaleString("es-CO")} futuros evaluados`}
