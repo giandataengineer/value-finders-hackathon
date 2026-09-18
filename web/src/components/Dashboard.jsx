@@ -5,8 +5,13 @@ import { Trazabilidad } from "./Trazabilidad";
 import { BASE, ETIQUETA, FINAL, nombreActivo, pct, pctS, pesosVisibles } from "../lib/vf";
 import "../styles/dashboard.css";
 
-const Resp = ({ n, titulo, children }) => (
-  <article className="cc-resp"><span className="cc-n">{n}</span><h4>{titulo}</h4>{children}</article>
+const Resp = ({ n, titulo, children, destacar }) => (
+  <article className={destacar ? "cc-resp cc-resp--reco" : "cc-resp"}>
+    <span className="cc-n">{n}</span>
+    {destacar && <span className="cc-badge-reco">LA RECOMENDACIÓN</span>}
+    <h4>{titulo}</h4>
+    {children}
+  </article>
 );
 
 /* Decision Dashboard: una vista principal que responde las 5 preguntas del reto. Todo el texto sale de las cifras del cliente elegido. */
@@ -62,7 +67,7 @@ export function Dashboard({ payload, cid, setCid }) {
           <p>En un estrés como el de 2020-2025, la probabilidad de superar la tolerancia sube a {pct(est.p_mdd_sobre_tol, 0)}.</p>
         </Resp>
 
-        <Resp n="4" titulo="¿Qué debería hacer?">
+        <Resp n="4" titulo="¿Qué debería hacer?" destacar>
           <p>Sugerimos evaluar esta asignación: {pesos.map(([k, v]) => `${k === "CAJA" ? "caja" : nombreActivo(payload, k)} ${pct(v, 0)}`).join(", ")}.</p>
           <p>{caja >= 0.5 ? `Casi todo queda en caja (${pct(caja, 0)}): con esta tolerancia de caída el universo de 8 acciones deja poco espacio para riesgo. ` : ""}Mezcla de estados: {pct(mez?.p_mdd_sobre_tol, 0)} de probabilidad de superar la tolerancia frente a un presupuesto de {pct(perfil.presupuesto_riesgo, 0)}{cumple ? ", dentro del presupuesto" : ", por encima del presupuesto"}.</p>
           {costo != null && <p>La alternativa base ({pesosVisibles(c.carteras[BASE]).map(([k, v]) => `${k === "CAJA" ? "caja" : nombreActivo(payload, k)} ${pct(v, 0)}`).join(", ")}) {costo > 0.005 ? `rinde ${pctS(costo)} más de retorno anual mediano en la mezcla: ese es el costo de protegerse del estrés.` : "rinde prácticamente lo mismo en la mezcla: protegerse del estrés casi no cuesta retorno."} La decisión es de la persona.</p>}
