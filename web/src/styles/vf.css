@@ -1,0 +1,47 @@
+/* Value Finders: marca de Credicorp Capital, capas del medallón, tablas de comparación y vista de decisión. */
+:root { --cc-red: #d3222e; --cc-blue: #2b62d9; --cc-ink: #141414; }
+.marca-cc { display: inline-flex; align-items: center; gap: 9px; }
+.marca-cc__nombre { font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--ink); }
+.marca-cc__nombre span { font-weight: 400; color: var(--muted); margin-left: 1px; }
+.topbar__right.label { justify-self: end; color: var(--muted); }
+.cc-clientes { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 28px; }
+.cc-cliente { position: relative; text-align: left; background: var(--panel-warm); border: 1px solid var(--line); border-radius: 22px; padding: 22px 22px 20px; cursor: pointer; font: inherit; color: inherit; transition: transform .25s var(--ease), border-color .25s; }
+.cc-cliente:hover { transform: translateY(-3px); }
+.cc-cliente[aria-pressed="true"] { border-color: var(--cc-blue); box-shadow: 0 0 0 1px var(--cc-blue) inset; }
+.cc-cliente__cuadros { position: absolute; top: 16px; right: 16px; width: 30px; height: 30px; }
+.cc-cliente__cuadros i { position: absolute; width: 14px; height: 14px; }
+.cc-cliente__cuadros i:first-child { left: 0; bottom: 0; background: var(--cc-blue); }
+.cc-cliente__cuadros i:last-child { right: 0; top: 0; background: var(--cc-red); }
+.cc-cliente h3 { font-family: var(--font-display); font-size: 22px; margin: 6px 0 10px; }
+.cc-cliente dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 13.5px; margin: 0; }
+.cc-cliente dt { color: var(--muted); } .cc-cliente dd { margin: 0; }
+.cc-aviso { margin-top: 24px; padding: 16px 20px; border: 1px dashed var(--cc-blue); border-radius: 16px; background: rgba(43,98,217,.06); font-size: 14.5px; line-height: 1.5; }
+.cc-capas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.cc-capa { border-radius: 20px; padding: 20px; border: 1px solid var(--line); background: var(--panel-warm); }
+.cc-capa--bronze { border-top: 4px solid #a8642a; } .cc-capa--silver { border-top: 4px solid #8c96a3; } .cc-capa--gold { border-top: 4px solid #d1a21b; }
+.cc-capa b { display: block; font-family: var(--font-display); font-size: 34px; letter-spacing: -0.02em; }
+.cc-capa span { color: var(--muted); font-size: 13.5px; }
+.cc-pill { display: inline-block; font: 600 11.5px var(--font-mono); padding: 3px 9px; border-radius: 999px; background: var(--panel); border: 1px solid var(--line); white-space: nowrap; }
+.cc-pill--usar { background: rgba(21,138,92,.12); border-color: rgba(21,138,92,.4); color: var(--green-text); }
+.cc-pill--no { background: rgba(211,34,46,.10); border-color: rgba(211,34,46,.35); color: #a3151f; }
+.cc-pill--escenario { background: rgba(43,98,217,.10); border-color: rgba(43,98,217,.4); color: #1d47a8; }
+.cc-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 18px; }
+.cc-stack { display: grid; gap: 18px; }
+.cc-dec { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.cc-resp { background: var(--panel-warm); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
+.cc-resp .cc-n { font: 600 12px var(--font-mono); color: var(--cc-red); letter-spacing: .08em; }
+.cc-resp h4 { font-family: var(--font-display); font-size: 20px; margin: 6px 0 10px; }
+.cc-resp p, .cc-resp li { font-size: 14.5px; line-height: 1.55; color: var(--text); }
+.cc-resp ul { padding-left: 18px; margin: 8px 0 0; }
+.cc-cmp td, .cc-cmp th { text-align: center; } .cc-cmp td:first-child, .cc-cmp th:first-child { text-align: left; }
+.cc-si { color: var(--green-text); font-weight: 700; } .cc-pa { color: #9a6b00; font-weight: 700; } .cc-no { color: #a3151f; font-weight: 700; }
+.cc-ours { background: rgba(43,98,217,.07); }
+.cc-cadena { display: grid; gap: 10px; counter-reset: paso; }
+.cc-cadena li { list-style: none; display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; font-size: 14px; }
+.cc-cadena li::before { counter-increment: paso; content: counter(paso); width: 28px; height: 28px; border-radius: 50%; background: var(--cc-blue); color: #fff; display: grid; place-items: center; font: 600 13px var(--font-mono); }
+.cc-cadena code { font: 12px var(--font-mono); word-break: break-all; }
+.cc-nota { font-size: 12.5px; color: var(--muted); margin-top: 10px; }
+.cc-giro { display: grid; gap: 8px; }
+.cc-giro h4 { margin: 0; font-family: var(--font-display); font-size: 19px; }
+.cc-giro .cc-n { font: 600 12px var(--font-mono); color: var(--cc-blue); }
+@media (max-width: 800px) { .cc-capas { grid-template-columns: 1fr; } }

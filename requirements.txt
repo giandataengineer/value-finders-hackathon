@@ -1,0 +1,10 @@
+duckdb==1.5.5
+numpy==2.4.6
+pandas==3.0.3
+scipy==1.18.0
+matplotlib==3.11.1
+openai==2.38.0
+python-dotenv==1.1.1
+pytest==9.1.1
+# Solo para publicar el gold y las salidas en Databricks (python src/run.py --databricks); no hace falta para el resto
+# databricks-connect

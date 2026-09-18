@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# datos de la hackathon (regenerables via src/run.py, src/twists.py; no se republica el dataset del organizador)
+data/raw/
+data/bronze/
+data/silver/
+data/gold/
+data/*.duckdb
+outputs/
+
+# node
+web/node_modules/
+web/dist/
+web/.vercel
+
+# secretos
+.env
+.env.*
+web/api/_data/*.env

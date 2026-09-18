@@ -1,0 +1,91 @@
+{
+ "generado": "2026-09-18T16:34:13+00:00",
+ "cartera_final": "recomendada defensiva (con estres)",
+ "clientes": {
+  "CL_01": {
+   "perfil": {
+    "nombre": "Crecimiento Global",
+    "moneda": "USD",
+    "horizonte_meses": 18,
+    "tolerancia_caida": 0.22,
+    "liquidez": "Baja",
+    "prioridad": "Crecimiento de capital",
+    "riesgo": "Alta",
+    "restriccion": "Máx. 45% en un solo sector",
+    "presupuesto_riesgo": 0.25
+   },
+   "metricas": {
+    "ret_anual": 0.061663307247340926,
+    "p5": -0.2391665130853653,
+    "p95": 0.5191952884197234,
+    "prob_perdida": 0.3291,
+    "cvar5": -0.3399919914007187,
+    "mdd_mediano": 0.16660961508750916,
+    "p_mdd_sobre_tol": 0.2578
+   },
+   "cartera": {
+    "VF_A04": 0.3708,
+    "VF_A05": 0.4402,
+    "CAJA": 0.189
+   },
+   "texto": "Cliente CL_01 (Crecimiento Global), perfil Crecimiento de capital, moneda base USD, horizonte 18 meses, tolerancia de caída 22%, restricción: Máx. 45% en un solo sector. Cartera recomendada (recomendada defensiva (con estres)): VF_A04 37%, VF_A05 44%, CAJA 19%. Simulación de 10.000 futuros: retorno anual mediano 6.2%, percentil 5 al final del horizonte -24%, probabilidad de pérdida 33%, caída máxima mediana 17% contra un presupuesto de riesgo de 25%."
+  },
+  "CL_02": {
+   "perfil": {
+    "nombre": "Patrimonio Estable",
+    "moneda": "COP",
+    "horizonte_meses": 36,
+    "tolerancia_caida": 0.1,
+    "liquidez": "Media",
+    "prioridad": "Preservación + crecimiento moderado",
+    "riesgo": "Media-Baja",
+    "restriccion": "Máx. 25% en activos de alta volatilidad",
+    "presupuesto_riesgo": 0.15
+   },
+   "metricas": {
+    "ret_anual": 0.04415873526866343,
+    "p5": -0.017432987689971924,
+    "p95": 0.34827489256858823,
+    "prob_perdida": 0.0754,
+    "cvar5": -0.05830029444304293,
+    "mdd_mediano": 0.06573516502976418,
+    "p_mdd_sobre_tol": 0.1427
+   },
+   "cartera": {
+    "VF_A04": 0.0286,
+    "VF_A05": 0.0759,
+    "CAJA": 0.8956
+   },
+   "texto": "Cliente CL_02 (Patrimonio Estable), perfil Preservación + crecimiento moderado, moneda base COP, horizonte 36 meses, tolerancia de caída 10%, restricción: Máx. 25% en activos de alta volatilidad. Cartera recomendada (recomendada defensiva (con estres)): VF_A04 3%, VF_A05 8%, CAJA 90%. Simulación de 10.000 futuros: retorno anual mediano 4.4%, percentil 5 al final del horizonte -2%, probabilidad de pérdida 8%, caída máxima mediana 7% contra un presupuesto de riesgo de 15%."
+  },
+  "CL_03": {
+   "perfil": {
+    "nombre": "Diversificación Regional",
+    "moneda": "PEN",
+    "horizonte_meses": 24,
+    "tolerancia_caida": 0.15,
+    "liquidez": "Media",
+    "prioridad": "Diversificación geográfica",
+    "riesgo": "Media",
+    "restriccion": "Al menos 3 países y 3 sectores",
+    "presupuesto_riesgo": 0.2
+   },
+   "metricas": {
+    "ret_anual": 0.05329398885011427,
+    "p5": -0.13688934445381162,
+    "p95": 0.37259516119956937,
+    "prob_perdida": 0.2189,
+    "cvar5": -0.22644242757558822,
+    "mdd_mediano": 0.09979720041155815,
+    "p_mdd_sobre_tol": 0.1809
+   },
+   "cartera": {
+    "VF_A01": 0.1083,
+    "VF_A04": 0.1695,
+    "VF_A05": 0.2252,
+    "CAJA": 0.497
+   },
+   "texto": "Cliente CL_03 (Diversificación Regional), perfil Diversificación geográfica, moneda base PEN, horizonte 24 meses, tolerancia de caída 15%, restricción: Al menos 3 países y 3 sectores. Cartera recomendada (recomendada defensiva (con estres)): VF_A01 11%, VF_A04 17%, VF_A05 23%, CAJA 50%. Simulación de 10.000 futuros: retorno anual mediano 5.3%, percentil 5 al final del horizonte -14%, probabilidad de pérdida 22%, caída máxima mediana 10% contra un presupuesto de riesgo de 20%."
+  }
+ }
+}

@@ -1,0 +1,25 @@
+/* Núcleo: caso, datos, señal y giros. */
+.nu-stack { display: grid; gap: 18px; }
+.nu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; }
+.nu-preguntas { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin-top: 28px; }
+.nu-preg { border: 1px solid var(--line); border-radius: 18px; padding: 16px 18px; background: var(--panel-warm); font-size: 14.5px; line-height: 1.45; }
+.nu-preg b { display: block; font: 600 12px var(--font-mono); color: var(--cc-red); letter-spacing: .08em; margin-bottom: 6px; }
+.nu-caso h2 { max-width: 22ch; }
+.nu-pregunta { font-family: var(--font-display); font-size: clamp(20px, 2.2vw, 28px); line-height: 1.25; max-width: 60ch; margin: 18px 0 0; }
+.nu-ok { color: var(--green-text); font-weight: 700; } .nu-mal { color: #a3151f; font-weight: 700; }
+.nu-grande { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; font-family: var(--font-display); font-size: clamp(38px, 5vw, 64px); letter-spacing: -0.03em; line-height: 1; }
+.nu-grande small { font: 500 14px var(--font-sans); color: var(--muted); letter-spacing: 0; }
+.nu-flecha { color: var(--cc-red); }
+.nu-sub { margin: 4px 0 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
+.nu-tabla td, .nu-tabla th { font-size: 13px; }
+.nu-num { text-align: right; font-variant-numeric: tabular-nums; }
+.nu-aviso { padding: 14px 18px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); font-size: 14px; }
+.nu-giro { display: grid; gap: 8px; padding: 22px; border: 1px solid var(--line); border-radius: 22px; background: var(--panel-warm); }
+.nu-giro__n { font: 600 12px var(--font-mono); color: var(--cc-blue); letter-spacing: .08em; }
+.nu-giro h4 { margin: 0; font-family: var(--font-display); font-size: 20px; }
+.nu-giro p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+.nu-giro__cli { font: 600 11.5px var(--font-mono); color: var(--muted); }
+.nu-giros { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.nu-giros-sec { margin-top: 56px; }
+.nu-chart { height: 300px; }
+@media (max-width: 800px) { .nu-chart { height: 240px; } }

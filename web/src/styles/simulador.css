@@ -1,0 +1,33 @@
+/* Mi inversión: simulador en el navegador. Reutiliza los tokens de la plantilla. */
+.mi-inv { display: grid; gap: 18px; }
+.mi-inv__form { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px 22px; margin-top: 22px; }
+.mi-inv__form label { display: grid; gap: 8px; font-size: 13.5px; color: var(--muted); }
+.mi-inv__form b { color: var(--ink); }
+.mi-inv__form input[type="number"], .mi-inv__form select {
+  font: 500 15px var(--font-sans); padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel-warm); color: var(--ink);
+}
+.mi-inv__form input[type="range"] { accent-color: var(--cc-blue, #2b62d9); width: 100%; }
+.mi-inv__estado { position: relative; margin-top: 20px; font: 12px var(--font-mono); color: var(--muted); padding-bottom: 8px; }
+.mi-inv__estado i { position: absolute; left: 0; bottom: 0; height: 2px; background: var(--cc-blue, #2b62d9); transition: width .2s; }
+.mi-inv__alerta { padding: 16px 18px; border-radius: 16px; border: 1px solid var(--line); font-size: 14.5px; line-height: 1.55; background: var(--panel-warm); }
+.mi-inv__alerta--alerta { border-color: #d3222e; background: rgba(211, 34, 46, 0.08); }
+.mi-inv__alerta--atencion { border-color: #c98a00; background: rgba(201, 138, 0, 0.09); }
+.mi-inv__alerta--ok { border-color: #158a5c; background: rgba(21, 138, 92, 0.08); }
+.mi-inv__reglas { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; line-height: 1.5; }
+.mi-inv__reglas li.es-activa { font-weight: 600; color: var(--ink); }
+.mi-inv__nota { margin-top: 18px; font-size: 12.5px; color: var(--muted); }
+
+.abanico-mc {
+  position: relative; height: 260px; margin-bottom: 16px; border-radius: 22px; overflow: hidden;
+  border: 1px solid var(--line);
+  background: radial-gradient(120% 140% at 12% 0%, rgba(43,98,217,.12), transparent 60%),
+              radial-gradient(120% 140% at 100% 100%, rgba(211,34,46,.10), transparent 55%),
+              var(--panel-warm);
+}
+.abanico-mc canvas { display: block; width: 100%; height: 100%; }
+.abanico-mc__etq {
+  position: absolute; right: 14px; bottom: 12px; font: 600 11px var(--font-mono); letter-spacing: .05em;
+  color: var(--muted); background: rgba(255,255,255,.6); backdrop-filter: blur(3px);
+  padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line);
+}
+@media (max-width: 800px) { .abanico-mc { height: 200px; } }
