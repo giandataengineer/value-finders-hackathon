@@ -13,8 +13,16 @@ function nombreModelo(m) {
 
 /* Markdown-lite del propio texto del asistente: negrita y listas. Nunca HTML crudo (sin dangerouslySetInnerHTML). */
 function conNegritas(linea, key) {
-  const partes = linea.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
-  return <span key={key}>{partes.map((p, i) => (p.startsWith("**") && p.endsWith("**") ? <strong key={i}>{p.slice(2, -2)}</strong> : p))}</span>;
+  const partes = linea.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean);
+  return (
+    <span key={key}>
+      {partes.map((p, i) => {
+        if (p.startsWith("**") && p.endsWith("**")) return <strong key={i}>{p.slice(2, -2)}</strong>;
+        if (p.startsWith("*") && p.endsWith("*")) return <em key={i}>{p.slice(1, -1)}</em>;
+        return p;
+      })}
+    </span>
+  );
 }
 
 function renderMensaje(texto) {
