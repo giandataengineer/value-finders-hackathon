@@ -11,6 +11,25 @@ function nombreModelo(m) {
   return (m || "").replace(/:free$/, "");
 }
 
+/* Markdown-lite del propio texto del asistente: negrita y listas. Nunca HTML crudo (sin dangerouslySetInnerHTML). */
+function conNegritas(linea, key) {
+  const partes = linea.split(/(\*\*[^*]+\*\*)/g).filter(Boolean);
+  return <span key={key}>{partes.map((p, i) => (p.startsWith("**") && p.endsWith("**") ? <strong key={i}>{p.slice(2, -2)}</strong> : p))}</span>;
+}
+
+function renderMensaje(texto) {
+  const lineas = String(texto ?? "").split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  const bloques = [];
+  let lista = [];
+  const cerrarLista = () => { if (lista.length) { bloques.push(<ul key={`ul-${bloques.length}`}>{lista}</ul>); lista = []; } };
+  lineas.forEach((linea, i) => {
+    if (/^[-*]\s+/.test(linea)) lista.push(<li key={i}>{conNegritas(linea.replace(/^[-*]\s+/, ""), i)}</li>);
+    else { cerrarLista(); bloques.push(<p key={`p-${i}`}>{conNegritas(linea, i)}</p>); }
+  });
+  cerrarLista();
+  return bloques;
+}
+
 export function Asistente({ payload, cid, setCid }) {
   const clientes = payload?.caso?.clientes ?? [];
   const cliente = clientes.find((c) => c.id === cid) ?? clientes[0];
@@ -79,7 +98,7 @@ export function Asistente({ payload, cid, setCid }) {
         <div className="asis__ventana" ref={listaRef}>
           {mensajes.map((m, i) => (
             <div key={i} className={`asis__msg asis__msg--${m.role}`}>
-              <p>{m.content}</p>
+              {renderMensaje(m.content)}
               {m.role === "assistant" && (m.modelo || m.determinista) && (
                 <span className={`asis__firma ${m.determinista ? "asis__firma--reglas" : ""}`}>
                   {m.determinista ? <><IconAlert style={{ width: 12, height: 12 }} />solo reglas, sin modelo de IA disponible</> : `${nombreModelo(m.modelo)} · ${m.proveedor}`}

@@ -30,7 +30,7 @@ export async function procesar(body, ip = "local") {
   let salida;
   try {
     const r = await llamar([{ role: "system", content: promptSistema(cid, ctx, body?.simulacion, mercado) }, ...mensajes],
-      { orden: ORDEN_CHAT, temperatura: 0.4, maxTokens: 900, timeoutMs: 22_000 });
+      { orden: ORDEN_CHAT, temperatura: 0.4, maxTokens: 900, timeoutMs: 22_000, maxIntentos: 30 });
     salida = { texto: String(r.salida), modelo: r.modelo, proveedor: r.proveedor };
   } catch (e) {
     const motivo = e.intentos?.length ? "los modelos de IA gratuitos no respondieron" : "no hay claves de IA configuradas";
