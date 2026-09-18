@@ -77,7 +77,11 @@ export function respuestaDeterminista(cid, ctx, pregunta, simulacion, motivo = "
     partes.push(`Para el perfil ${p.nombre} la simulación de 10.000 futuros da un retorno anual mediano de ${(m.ret_anual * 100).toFixed(1)}% en el caso base, un 5% de los casos peor que ${pc(m.p5)} al final del horizonte y una probabilidad de pérdida de ${pc(m.prob_perdida)}. Son rangos de un caso sintético, no promesas.`);
   } else partes.push(`${p.resumen} Las cifras de la simulación no están cargadas en esta instalación.`);
   const s = limpiarSimulacion(simulacion);
-  if (s?.percentiles) partes.push(`Tu simulación mostró estos percentiles: ${JSON.stringify(s.percentiles)}.`);
+  if (s?.percentiles?.p5 != null && s.percentiles.p95 != null) {
+    const gan = (v) => `${((v - 1) * 100).toFixed(0)}%`;
+    const mediana = s.percentiles.p50 != null ? `, con una mediana de ${gan(s.percentiles.p50)}` : "";
+    partes.push(`Tu propia simulación mostró un resultado entre ${gan(s.percentiles.p5)} (peor 5%) y ${gan(s.percentiles.p95)} (mejor 5%)${mediana}.`);
+  }
   partes.push("La decisión es de las personas; esto no es asesoría financiera.");
   return partes.join(" ");
 }
