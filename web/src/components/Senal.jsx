@@ -32,10 +32,12 @@ export function Senal({ payload }) {
       <Panel eyebrow="Mercado" title="Precios de los 8 activos, base 100, últimos 12 meses">
         <div className="nu-chart">
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={datos} margin={{ left: 0, right: 8, top: 8 }}>
+            <LineChart data={datos} margin={{ left: 4, right: 8, top: 8, bottom: 22 }}>
               <CartesianGrid stroke="var(--line)" vertical={false} />
-              <XAxis dataKey="f" tick={{ fontSize: 11 }} minTickGap={48} tickFormatter={(d) => d.slice(0, 7)} />
-              <YAxis tick={{ fontSize: 11 }} domain={["auto", "auto"]} width={40} />
+              <XAxis dataKey="f" tick={{ fontSize: 11 }} minTickGap={48} tickFormatter={(d) => d.slice(0, 7)}
+                label={{ value: "Fecha (año-mes)", position: "insideBottom", offset: -14, fontSize: 11, fill: "var(--muted)" }} />
+              <YAxis tick={{ fontSize: 11 }} domain={["auto", "auto"]} width={40}
+                label={{ value: "Precio indexado (base 100)", angle: -90, position: "insideLeft", offset: 6, fontSize: 11, fill: "var(--muted)" }} />
               <Tooltip labelFormatter={(d) => d} formatter={(v) => fmtC(v)} />
               <Legend wrapperStyle={{ fontSize: 11 }} />
               {stress.map((r) => <ReferenceArea key={r.desde} x1={r.desde} x2={r.hasta} fill="#d3222e" fillOpacity={0.12} label={{ value: "Stress", fontSize: 11, fill: "#a3151f" }} />)}

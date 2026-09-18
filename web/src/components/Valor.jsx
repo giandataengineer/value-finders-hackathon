@@ -75,10 +75,12 @@ export function Valor({ payload, cid, setCid }) {
       <Panel eyebrow="Abanico de resultados" title={`Valor de la cartera recomendada mes a mes (${perfil.moneda}, variación %)`}>
         <div className="cc-fan">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={fan} margin={{ left: 0, right: 8, top: 8 }}>
+            <AreaChart data={fan} margin={{ left: 4, right: 8, top: 8, bottom: 22 }}>
               <CartesianGrid stroke="var(--line)" vertical={false} />
-              <XAxis dataKey="mes" tickLine={false} axisLine={false} unit=" m" />
-              <YAxis tickLine={false} axisLine={false} unit="%" width={44} />
+              <XAxis dataKey="mes" tickLine={false} axisLine={false} unit=" m"
+                label={{ value: "Mes del horizonte", position: "insideBottom", offset: -14, fontSize: 11, fill: "var(--muted)" }} />
+              <YAxis tickLine={false} axisLine={false} unit="%" width={44}
+                label={{ value: "Variación de la cartera (%)", angle: -90, position: "insideLeft", offset: 6, fontSize: 11, fill: "var(--muted)" }} />
               <Tooltip formatter={(v) => (Array.isArray(v) ? `${num(v[0], 1)} % a ${num(v[1], 1)} %` : `${num(v, 1)} %`)} labelFormatter={(l) => `Mes ${l}`} />
               <Area type="monotone" dataKey="banda90" name="P5 a P95" stroke="none" fill="var(--cc-blue)" fillOpacity={0.14} />
               <Area type="monotone" dataKey="banda50" name="P25 a P75" stroke="none" fill="var(--cc-blue)" fillOpacity={0.28} />

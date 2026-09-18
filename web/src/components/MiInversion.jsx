@@ -157,10 +157,12 @@ export function MiInversion({ payload, cid, setCid }) {
             <p className="panel__copy">{lectura}</p>
             <AbanicoMonteCarlo res={res} monto={monto} />
             <ResponsiveContainer width="100%" height={300}>
-              <ComposedChart data={datos} margin={{ left: 8, right: 8, top: 8 }}>
+              <ComposedChart data={datos} margin={{ left: 8, right: 8, top: 8, bottom: 22 }}>
                 <CartesianGrid stroke="var(--line)" vertical={false} />
-                <XAxis dataKey="mes" tickFormatter={(m) => `${m} m`} />
-                <YAxis width={82} tickFormatter={(v) => new Intl.NumberFormat("es-CO", { notation: "compact", maximumFractionDigits: 1 }).format(v)} domain={["auto", "auto"]} />
+                <XAxis dataKey="mes" tickFormatter={(m) => `${m} m`}
+                  label={{ value: "Mes del horizonte", position: "insideBottom", offset: -14, fontSize: 11, fill: "var(--muted)" }} />
+                <YAxis width={82} tickFormatter={(v) => new Intl.NumberFormat("es-CO", { notation: "compact", maximumFractionDigits: 1 }).format(v)} domain={["auto", "auto"]}
+                  label={{ value: `Valor de la inversión (${cliente.moneda})`, angle: -90, position: "insideLeft", offset: 8, fontSize: 11, fill: "var(--muted)" }} />
                 <Tooltip formatter={(v) => (Array.isArray(v) ? `${fmt(v[0])} a ${fmt(v[1])}` : fmt(v))} labelFormatter={(m) => `Mes ${m}`} />
                 <Area dataKey="banda90" name="P5 a P95" stroke="none" fill="#2b62d9" fillOpacity={0.16} isAnimationActive={false} />
                 <Area dataKey="banda50" name="P25 a P75" stroke="none" fill="#2b62d9" fillOpacity={0.3} isAnimationActive={false} />
