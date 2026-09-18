@@ -18,7 +18,9 @@ function conNegritas(linea, key) {
 }
 
 function renderMensaje(texto) {
-  const lineas = String(texto ?? "").split(/\n+/).map((l) => l.trim()).filter(Boolean);
+  // algunos modelos gratuitos meten las vinetas " - **X**: ..." seguidas en el mismo parrafo en vez de en lineas separadas
+  const normalizado = String(texto ?? "").replace(/\s-\s(?=\*\*)/g, "\n- ");
+  const lineas = normalizado.split(/\n+/).map((l) => l.trim()).filter(Boolean);
   const bloques = [];
   let lista = [];
   const cerrarLista = () => { if (lista.length) { bloques.push(<ul key={`ul-${bloques.length}`}>{lista}</ul>); lista = []; } };
